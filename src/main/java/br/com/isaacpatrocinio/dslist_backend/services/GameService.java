@@ -5,6 +5,7 @@ import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameMinDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.Mapper;
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
+import br.com.isaacpatrocinio.dslist_backend.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,6 @@ public class GameService {
     public GameDTO findById(Long id) {
         return gameRepository.findById(id)
                 .map(Mapper::toDTO)
-                .get();
+                .orElseThrow(() -> new ResourceNotFoundException("Id doesn't exists"));
     }
 }
