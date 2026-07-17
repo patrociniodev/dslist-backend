@@ -1,5 +1,6 @@
 package br.com.isaacpatrocinio.dslist_backend.services;
 
+import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameMinDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.Mapper;
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
@@ -19,10 +20,12 @@ public class GameService {
 
     public List<GameMinDTO> findAll() {
         List<Game> list = gameRepository.findAll();
-        return list.stream().map(Mapper::toDTO).toList();
+        return list.stream().map(Mapper::toMinDTO).toList();
     }
 
-    public GameMinDTO findById(Long id) {
-        return Mapper.toDTO(gameRepository.findById(id).get());
+    public GameDTO findById(Long id) {
+        return gameRepository.findById(id)
+                .map(Mapper::toDTO)
+                .get();
     }
 }
