@@ -23,13 +23,13 @@ public class GameService {
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll() {
         List<Game> list = gameRepository.findAll();
-        return list.stream().map(Mapper::toMinDTO).toList();
+        return list.stream().map(Mapper::gameToMinDTO).toList();
     }
 
     @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
         return gameRepository.findById(id)
-                .map(Mapper::toDTO)
+                .map(Mapper::gameToDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Id doesn't exists"));
     }
 }
