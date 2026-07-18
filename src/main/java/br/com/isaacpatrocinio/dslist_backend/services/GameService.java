@@ -4,6 +4,7 @@ import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameMinDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.Mapper;
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
+import br.com.isaacpatrocinio.dslist_backend.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
 import br.com.isaacpatrocinio.dslist_backend.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,10 @@ public class GameService {
 
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll() {
-        List<Game> list = gameRepository.findAll();
-        return list.stream().map(Mapper::gameToMinDTO).toList();
+        return gameRepository.findAll()
+                .stream()
+                .map(Mapper::gameToMinDTO)
+                .toList();
     }
 
     @Transactional(readOnly = true)
@@ -31,5 +34,13 @@ public class GameService {
         return gameRepository.findById(id)
                 .map(Mapper::gameToDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Id doesn't exists"));
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        return gameRepository.searchGamesByList(listId)
+                .stream()
+                .map(Mapper::projectionToMinDTO)
+                .toList();
     }
 }

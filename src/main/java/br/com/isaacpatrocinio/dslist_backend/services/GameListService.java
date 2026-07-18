@@ -2,7 +2,9 @@ package br.com.isaacpatrocinio.dslist_backend.services;
 
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameListDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.Mapper;
+import br.com.isaacpatrocinio.dslist_backend.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameListRepository;
+import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
 import br.com.isaacpatrocinio.dslist_backend.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +22,10 @@ public class GameListService {
 
     @Transactional(readOnly = true)
     public List<GameListDTO> findAll() {
-        return gameListRepository.findAll().stream().map(Mapper::gameListToDTO).toList();
+        return gameListRepository.findAll()
+                .stream()
+                .map(Mapper::gameListToDTO)
+                .toList();
     }
 
     @Transactional(readOnly = true)
