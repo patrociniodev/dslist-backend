@@ -25,7 +25,7 @@ public class Mapper {
         return gameListDTO;
     }
 
-    public static GameMinDTO projectionToMinDTO(GameMinProjection projection) {
+    public static GameMinDTO projectionToMinDTO(GameMinProjection projection){
         return new GameMinDTO(
                 projection.getId(),
                 projection.getTitle(),
