@@ -5,7 +5,7 @@
 DSList é um projeto de portfólio desenvolvido durante o evento Intensivão Java Spring. Consiste em uma API RESTful para gerenciar jogos e coleções de jogos e demonstrar boas práticas de desenvolvimento backend.
 
 ## Modelo Conceitual
-<img width="824" height="290" alt="dslist-model" src="https://github.com/user-attachments/assets/0dfaddb1-617f-4a60-a013-7fb9d9db5c5d" />
+<img width="824" height="290" alt="dslist-model" src="https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/dslist-model.png"/>
 
 ## Tecnologias Utilizadas
 - Java 21+
