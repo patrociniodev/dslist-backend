@@ -7,6 +7,7 @@ import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
 import br.com.isaacpatrocinio.dslist_backend.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
 import br.com.isaacpatrocinio.dslist_backend.services.exceptions.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
