@@ -2,12 +2,15 @@ package br.com.isaacpatrocinio.dslist_backend.domain.pk;
 
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.GameList;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BelongingPK {
+@Embeddable
+public class BelongingPK implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="game_id")

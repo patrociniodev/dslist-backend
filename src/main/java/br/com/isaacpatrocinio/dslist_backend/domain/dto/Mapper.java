@@ -25,13 +25,34 @@ public class Mapper {
         return gameListDTO;
     }
 
-    public static GameMinDTO projectionToMinDTO(GameMinProjection projection){
+    public static GameMinDTO projectionToMinDTO(GameMinProjection projection) {
         return new GameMinDTO(
                 projection.getId(),
                 projection.getTitle(),
                 projection.getGameYear(),
                 projection.getImgUrl(),
                 projection.getShortDescription()
+        );
+    }
+
+    public static Game gameFromDTO(GameDTO entity) {
+        return new Game(
+                entity.getId(),
+                entity.getTitle(),
+                entity.getYear(),
+                entity.getGenre(),
+                entity.getPlatforms(),
+                entity.getScore(),
+                entity.getImgUrl(),
+                entity.getShortDescription(),
+                entity.getLongDescription()
+        );
+    }
+
+    public static GameList listFromDTO(GameListDTO entity) {
+        return new GameList(
+                entity.getId(),
+                entity.getName()
         );
     }
 }
