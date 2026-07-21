@@ -4,6 +4,7 @@ import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameListDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameMinDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.Mapper;
 import br.com.isaacpatrocinio.dslist_backend.domain.entities.Game;
+import br.com.isaacpatrocinio.dslist_backend.domain.entities.GameList;
 import br.com.isaacpatrocinio.dslist_backend.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameListRepository;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
@@ -55,5 +56,12 @@ public class GameListService {
         for (int i = min; i <= max ; i++) {
             gameListRepository.updatePosition(listId, list.get(i).getId(), i);
         }
+    }
+
+    @Transactional
+    public GameListDTO insert(GameListDTO entity) {
+        GameList obj = Mapper.listFromDTO(entity);
+        GameList saved = gameListRepository.save(obj);
+        return Mapper.gameListToDTO(saved);
     }
 }

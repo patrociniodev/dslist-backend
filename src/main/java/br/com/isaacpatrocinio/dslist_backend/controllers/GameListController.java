@@ -5,9 +5,12 @@ import br.com.isaacpatrocinio.dslist_backend.domain.dto.GameMinDTO;
 import br.com.isaacpatrocinio.dslist_backend.domain.dto.ReplacementDTO;
 import br.com.isaacpatrocinio.dslist_backend.services.GameListService;
 import br.com.isaacpatrocinio.dslist_backend.services.GameService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -37,5 +40,18 @@ public class GameListController {
     public ResponseEntity<Void> moveGame(@PathVariable Long listId, @RequestBody ReplacementDTO dto) {
         gameListService.moveGame(listId, dto.getSourceIndex(), dto.getDestinationIndex());
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<GameListDTO> insert(
+            @RequestBody GameListDTO dto,
+            HttpServletRequest request) {
+        GameListDTO inserted = gameListService.insert(dto);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path(request.getRequestURI())
+                .buildAndExpand()
+                .toUri();
+        return ResponseEntity.created(uri).body(inserted);
     }
 }
