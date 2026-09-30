@@ -203,4 +203,4 @@ DSList é um projeto de portfólio desenvolvido durante o evento Intensivão Jav
     "destinationIndex" : 1
 }
 ```
-<img width="800" src="src/main/assets/dslist-view.gif" alt="Demonstração do App" />
+<img width="800" src="src/main/resources/assets/dslist-view.gif" alt="Demonstração do App" />
