@@ -68,4 +68,22 @@ public class GameService {
 
         return Mapper.gameToDTO(saved);
     }
+
+    @Transactional
+    public GameDTO update(Long id, GameInsertDTO entityDTO) {
+        GameInsertDTO objDTO = gameRepository.findById(id)
+                .map(x -> new GameInsertDTO(entityDTO))
+                .orElseThrow(() -> new ResourceNotFoundException("Id doesn't exists"));
+        objDTO.setId(id);
+
+        Game obj = Mapper.gameFromDTO(objDTO);
+        Game saved = gameRepository.save(obj);
+
+        return Mapper.gameToDTO(saved);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        gameRepository.deleteById(id);
+    }
 }

@@ -5,7 +5,18 @@ public class GameInsertDTO extends GameDTO {
     private Long gameListId;
 
     public GameInsertDTO() {
-        super();
+    }
+
+    public GameInsertDTO(GameDTO entity) {
+        setId(entity.getId());
+        setTitle(entity.getTitle());
+        setGenre(entity.getGenre());
+        setPlatforms(entity.getPlatforms());
+        setImgUrl(entity.getImgUrl());
+        setScore(entity.getScore());
+        setYear(entity.getYear());
+        setShortDescription(entity.getShortDescription());
+        setLongDescription(entity.getLongDescription());
     }
 
     public Long getGameListId() {

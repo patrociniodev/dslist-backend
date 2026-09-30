@@ -5,6 +5,8 @@ import br.com.isaacpatrocinio.dslist_backend.domain.entities.GameList;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,10 +16,12 @@ public class BelongingPK implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="game_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Game game;
 
     @ManyToOne
     @JoinColumn(name = "game_list_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private GameList gameList;
 
     public BelongingPK() {

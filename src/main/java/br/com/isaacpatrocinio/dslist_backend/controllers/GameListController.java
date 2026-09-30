@@ -54,4 +54,18 @@ public class GameListController {
                 .toUri();
         return ResponseEntity.created(uri).body(inserted);
     }
+
+    @PutMapping("/{listId}")
+    public ResponseEntity<GameListDTO> update(
+            @PathVariable Long listId,
+            @RequestBody GameListDTO dto
+    ) {
+       return ResponseEntity.ok().body(gameListService.update(listId, dto));
+    }
+
+    @DeleteMapping("/{listId}")
+    public ResponseEntity<Void> delete(@PathVariable Long listId) {
+        gameListService.delete(listId);
+        return ResponseEntity.noContent().build();
+    }
 }

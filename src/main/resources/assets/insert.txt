@@ -1,0 +1,31 @@
+{
+    "title" : "Grand Theft Auto VI",
+    "year" : 2026,
+    "genre" : "Action / Open-World",
+    "platforms" : "PlayStation 5, Xbox Series X|S",
+    "score": 9.8,
+    "imgUrl": "example.com",
+    "shortDescription": "Excepteur sint occaecat cupidatat non proident.",
+    "longDescription": "Sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius luctus odio et posuere cubilia Curae.",
+    "gameListId": 4
+}
+
+{
+    "title" : "Elden Ring",
+    "year" : 2022,
+    "genre" : "Action RPG",
+    "platforms" : "PC, PlayStation 5, Xbox Series X/S",
+    "score": 9.5,
+    "imgUrl": "example.com",
+    "shortDescription": "Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+    "longDescription": "Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "gameListId": 3
+}
+
+{
+    "name" : "Ação e RPG"
+}
+
+{
+    "name" : "Ação e Mundo Aberto"
+}

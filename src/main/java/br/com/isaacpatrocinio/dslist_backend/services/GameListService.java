@@ -9,6 +9,7 @@ import br.com.isaacpatrocinio.dslist_backend.projections.GameMinProjection;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameListRepository;
 import br.com.isaacpatrocinio.dslist_backend.repositories.GameRepository;
 import br.com.isaacpatrocinio.dslist_backend.services.exceptions.ResourceNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,7 +54,7 @@ public class GameListService {
         int max = Math.max(sourceIndex, destinationIndex);
 
 
-        for (int i = min; i <= max ; i++) {
+        for (int i = min; i <= max; i++) {
             gameListRepository.updatePosition(listId, list.get(i).getId(), i);
         }
     }
@@ -63,5 +64,25 @@ public class GameListService {
         GameList obj = Mapper.listFromDTO(entity);
         GameList saved = gameListRepository.save(obj);
         return Mapper.gameListToDTO(saved);
+    }
+
+    @Transactional
+    public GameListDTO update(Long id, GameListDTO entity) {
+        GameListDTO objDTO = findById(id);
+        objDTO.setId(id);
+        objDTO.setName(entity.getName());
+
+        GameList obj = Mapper.listFromDTO(objDTO);
+        GameList saved = gameListRepository.save(obj);
+
+        return Mapper.gameListToDTO(saved);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        if(!gameListRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Id doesn't exists");
+        }
+        gameListRepository.deleteById(id);
     }
 }
